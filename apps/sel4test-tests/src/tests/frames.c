@@ -52,6 +52,9 @@ static int test_frame_exported(env_t env)
     int err;
     for (int i = 0; i < ARRAY_SIZE(frame_types); i++) {
         bool once = false;
+// /*************************** Hong ******************************/
+//         printf("Hong: Testing type %d\n", i);
+// /***************************************************************/
         while (1) {
             /* Allocate the frame */
             seL4_CPtr frame = vka_alloc_frame_leaky(&env->vka, frame_types[i].size_bits);
@@ -81,6 +84,12 @@ static int test_frame_exported(env_t env)
             vspace_unmap_pages(&env->vspace, (void *)vaddr, 1, frame_types[i].size_bits, VSPACE_PRESERVE);
             test_error_eq(err, seL4_NoError);
         }
+// /*************************** Hong ******************************/
+//         if (once == false) {
+//             printf("Hong: Type %d has not been tested\n", i);
+//             once = true;
+//         }
+// /***************************************************************/
         test_assert(once);
     }
     return sel4test_get_result();

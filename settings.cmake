@@ -78,6 +78,7 @@ if(NOT Sel4testAllowSettingsOverride)
         endif()
     elseif(
         KernelPlatformZynqmp
+        OR KernelPlatformCheshire
         OR KernelPlatformPolarfire
         OR KernelPlatformQuartz64
         OR (SIMULATION AND (KernelArchRiscV OR KernelArchARM))
